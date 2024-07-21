@@ -7,12 +7,12 @@ from .forms import TaskForm
 
 @login_required
 def task_list_view(request):
-    # Get the tasks for the logged-in user
-    tasks = Task.objects.filter(user=request.user)
+    tasks = Task.objects.filter(user=request.user).order_by('-status')
 
     return render(request, 'tasks/task_list.html', context={
         'tasks': tasks,
     })
+
 
 
 @login_required
@@ -54,3 +54,21 @@ def task_delete_view(request, pk):
         return redirect('task_list')
 
     return render(request, 'tasks/task_delete.html', {'task': task})
+
+
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Task
+
+
+@login_required
+def task_finish_view(request, pk):
+    task = get_object_or_404(Task, pk=pk, user=request.user)
+
+    if task.status == 'p':  # If the task is pending
+        task.status = 'd'  # Mark as completed
+    elif task.status == 'd':  # If the task is completed
+        task.status = 'p'  # Mark as pending
+
+    task.save()
+    return redirect('task_list')
