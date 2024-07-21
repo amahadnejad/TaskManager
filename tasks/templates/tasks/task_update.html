@@ -1,5 +1,7 @@
 {% extends '_base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block page_title %}Update Task{% endblock page_title %}
 
 {% block content %}
@@ -15,11 +17,10 @@
                     <div class="row">
                         <div class="col-12 mb-3 mt-3">
                             <div class="form-group">
-                                {{ form.as_p }}
+                                {{ form|crispy }}
                             </div>
                         </div>
                     </div>
-
                     <!-- Buttons in a Line -->
                     <div class="d-flex justify-content-end mt-4">
                         <button type="submit" class="btn btn-primary me-2">Update Task</button>

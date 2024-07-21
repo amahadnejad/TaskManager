@@ -1,5 +1,7 @@
 {% extends '_base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block page_title %}Add Task{% endblock page_title %}
 
 {% block content %}
@@ -15,7 +17,7 @@
                     <div class="row">
                         <div class="col-12 mb-3 mt-3">
                             <div class="form-group">
-                                {{ form.as_p }}
+                                {{ form|crispy}}
                             </div>
                         </div>
                     </div>
