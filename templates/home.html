@@ -5,8 +5,8 @@
 {% block content %}
     <h1>Home</h1>
     {% if user.is_authenticated %}
-        <p>Welcome {{ user.username }} | <a href="{% url 'logout' %}">logout</a></p>
+        <p>Welcome {{ user.username }} | <a href="{% url 'account_logout' %}">logout</a></p>
     {% else %}
-        <a href="{% url 'login' %}">login</a> | <a href="{% url 'signup' %}">signup</a>
+        <a href="{% url 'account_login' %}">login</a> | <a href="{% url 'account_signup' %}">signup</a>
     {% endif %}
 {% endblock content %}
