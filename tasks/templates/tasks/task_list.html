@@ -3,7 +3,34 @@
 {% block page_title %}Tasks{% endblock page_title %}
 
 {% block content %}
-    {% for task in tasks %}
-        <a href="{% url 'task_update' task.id %}"><h1>{{ task.title }}</h1></a>
-    {% endfor %}
+    <div class="container mt-5">
+        <h1 class="mb-4">Task List</h1>
+        <table class="table table-striped" style="width: 100%; max-width: 1200px;">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Status</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for task in tasks %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ task.title }}</td>
+                    <td>{{ task.status }}</td>
+                    <td><a href="{% url 'task_update' task.id %}">Edit</a></td>
+                    <td><a href="{% url 'task_delete' task.id %}">Delete</a></td>
+
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3" class="text-center">No tasks found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock content %}
