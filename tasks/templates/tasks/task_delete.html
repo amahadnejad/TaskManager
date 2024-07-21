@@ -1,13 +1,12 @@
 {% extends '_base.html' %}
 
-{% block page_title %}Update{% endblock page_title %}
+{% block page_title %}Delete{% endblock page_title %}
 
 {% block content %}
-    <h2>Update {{ task.title }} Task</h2>
+    <h2>Delete {{ task.title }} Task</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save</button>
+        <button type="submit">Delete</button>
     </form>
-
 {% endblock content %}
