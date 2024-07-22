@@ -1,0 +1,25 @@
+{% extends '_base.html' %}
+
+{% block page_title %}Logout{% endblock page_title %}
+
+{% block content %}
+    <div class="container mt-5 d-flex justify-content-center">
+        <div class="row justify-content-center w-100">
+            <div class="col-md-6 col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Logout</h3>
+                    </div>
+                    <div class="card-body text-center">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-danger btn-block">Logout</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
