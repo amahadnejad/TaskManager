@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from .models import Task
 from .forms import TaskForm
@@ -14,7 +15,6 @@ def task_list_view(request):
     })
 
 
-
 @login_required
 def task_create_view(request):
     if request.method == 'POST':
@@ -23,6 +23,7 @@ def task_create_view(request):
             task = form.save(commit=False)
             task.user = request.user
             task.save()
+            messages.success(request, "Task Has SuccessFully Created!")
             return redirect('task_list')
     else:
         form = TaskForm()
@@ -38,6 +39,7 @@ def task_update_view(request, pk):
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
+            messages.warning(request, "Task Has SuccessFully Updated!")
             return redirect('task_list')
     else:
         form = TaskForm(instance=task)
@@ -51,6 +53,7 @@ def task_delete_view(request, pk):
 
     if request.method == 'POST':
         task.delete()
+        messages.error(request, "Task Has SuccessFully Deleted!")
         return redirect('task_list')
 
     return render(request, 'tasks/task_delete.html', {'task': task})
