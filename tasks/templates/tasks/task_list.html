@@ -24,7 +24,7 @@
                         {% for task in tasks %}
                             <tr {% if task.status != 'p' %}class="table-secondary"{% endif %}>
                                 <th scope="row">{{ forloop.counter }}</th>
-                                <td {% if task.status != 'p' %}style="text-decoration: line-through;"{% endif %}>{{ task.title }}</td>
+                                <td {% if task.status != 'p' %}style="text-decoration: line-through;"{% endif %}>{{ task.title|capfirst }}</td>
                                 <td>
                                     {% if task.status == 'p' %}
                                         <span class="text-warning">

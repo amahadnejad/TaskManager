@@ -145,3 +145,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
+
+# All-Auth Setting
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
