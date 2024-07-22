@@ -1,8 +1,22 @@
 {% extends '_base.html' %}
 
-{% block page_title %}Home{% endblock page_title %}
+{% load static %}
+
+{% block page_title %}Welcome{% endblock page_title %}
 
 {% block content %}
-    <h1>Home</h1>
-    <a href="{% url 'task_list' %}">tasks</a>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="text-center">
+            <div class="mb-4">
+                <h1 class="display-4">Welcome to Task Manager</h1>
+                <p class="lead">Manage your tasks efficiently with our intuitive task management system.</p>
+            </div>
+            <div class="mb-4">
+                <img src="{% static 'icons/task.webp' %}" class="img-fluid rounded shadow" alt="Task Manager" width="600" height="300">
+            </div>
+            <a href="{% url 'task_list' %}" class="btn btn-primary btn-lg">
+                Go to Task List
+            </a>
+        </div>
+    </div>
 {% endblock content %}

@@ -18,7 +18,7 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #36a1c2;" dir="rtl">
     <div class="container">
         <a class="navbar-brand" href="">
-            <img src="" alt="" height="30"
+            <img src="{% static 'icons/todo.png' %}" alt="" height="30"
                  class="d-inline-block align-text-top">
         </a>
         <a class="navbar-brand mx-3  text-light" href="">ToDoList</a>
@@ -29,7 +29,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-link active  text-light" aria-current="page"
-                   href="">Home</a>
+                   href="{% url 'home' %}">Home</a>
                 <a class="nav-link active  text-light" href="{% url 'task_list' %}">Tasks</a>
                 <a class="nav-link active  text-light" href="{% url 'task_create' %}">New Task</a>
             </div>
